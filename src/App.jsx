@@ -1,10 +1,14 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useLoader } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
+import { RGBELoader } from 'three-stdlib';
 import { Scene } from './components/Scene';
 import { Interface } from './components/Interface';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './pages/LandingPage';
 import './App.css';
+
+// Preload HDRI
+useLoader.preload(RGBELoader, '/hdri/studio_small_03_1k.hdr');
 
 function App() {
   const [showStudio, setShowStudio] = useState(false);

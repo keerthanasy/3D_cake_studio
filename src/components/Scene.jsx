@@ -15,7 +15,11 @@ export const Scene = () => {
           3. PointLight: Rim/Back light for separation.
       */}
 
-      <Environment preset="studio" blur={0.8} environmentIntensity={0.3} />
+      <Environment
+        files="/hdri/studio_small_03_1k.hdr"
+        blur={0.8}
+        environmentIntensity={0.3}
+      />
 
       <ambientLight intensity={0.1} />
       <spotLight
