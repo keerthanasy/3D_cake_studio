@@ -43,10 +43,8 @@ function App() {
         <Interface />
       </div>
 
-      {/* Loading Screen - shown during initial load */}
-      <Suspense fallback={<LoadingScreen />}>
-        {null}
-      </Suspense>
+      {/* Loading Screen - connects to R3F useProgress under the hood */}
+      <LoadingScreen />
     </div>
   );
 }
