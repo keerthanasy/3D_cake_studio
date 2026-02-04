@@ -4,22 +4,28 @@ import './LoadingScreen.css';
 
 export const LoadingScreen = () => {
     const { progress, active } = useProgress();
-    const [fadeOut, setFadeOut] = useState(false);
+    const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
     useEffect(() => {
         if (progress === 100) {
             // Keep the screen visible for a moment even after 100% to feel smooth
-            const timer = setTimeout(() => setFadeOut(true), 800);
+            const timer = setTimeout(() => {
+                setFadeOut(true);
+                // Mark initial load as complete after the transition
+                setTimeout(() => setInitialLoadComplete(true), 800);
+            }, 800);
             return () => clearTimeout(timer);
         } else {
-            setFadeOut(false);
+            // Only reset fadeOut if we haven't finished the initial load yet
+            if (!initialLoadComplete) {
+                setFadeOut(false);
+            }
         }
-    }, [progress]);
+    }, [progress, initialLoadComplete]);
 
-    // Force show if active, otherwise respect fadeOut state
-    // We only hide when fadeOut becomes true (after 100% + delay)
-    // Note: 'active' can be flaky initially, so we also rely on progress
-    const isVisible = active || progress < 100 || !fadeOut;
+    // Once initial load is done, force isVisible to false regardless of new 'active' states
+    // This prevents the screen from showing up again when switching shapes/models
+    const isVisible = !initialLoadComplete && (active || progress < 100 || !fadeOut);
 
     return (
         <div className={`loading-screen ${!isVisible ? 'hidden' : ''}`}>
