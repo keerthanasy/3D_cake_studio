@@ -1,7 +1,26 @@
-/* eslint-disable react/no-unknown-property */
 import { useMemo } from 'react';
 import * as THREE from 'three';
 import { useGLTF, Clone } from '@react-three/drei';
+
+// Preload common 3D assets to reduce lag on interaction
+// We iterate through the config to dynamicially preload everything
+const ALL_MODELS = [
+    '/models/cherries.glb',
+    '/models/strawberry.glb',
+    '/models/kiwi.glb',
+    '/models/pineapple.glb',
+    '/models/choco_chips.glb',
+    '/models/fudge_cubes.glb',
+    '/models/kitkat.glb',
+    '/models/oreo.glb',
+    '/models/almonds.glb',
+    '/models/cashews.glb',
+    '/models/macarons.glb',
+    '/models/ferrero.glb',
+    '/models/candle.glb'
+];
+
+ALL_MODELS.forEach(path => useGLTF.preload(path));
 import { getHeartShape, getStarShape, getMickeyShape, getDoraShape, getBujjiShape } from '../utils/shapes';
 import { TOPPING_CATEGORIES } from '../utils/toppingConfig';
 
