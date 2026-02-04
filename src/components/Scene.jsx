@@ -15,18 +15,18 @@ export const Scene = () => {
           3. PointLight: Rim/Back light for separation.
       */}
 
-      <Environment preset="studio" blur={0.8} />
+      <Environment preset="studio" blur={0.8} environmentIntensity={0.3} />
 
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.1} />
       <spotLight
         position={[4, 5, 4]}
         angle={0.3}
         penumbra={1}
-        intensity={2.5}
+        intensity={1.5}
         castShadow
         shadow-bias={-0.0001}
       />
-      <pointLight position={[-3, 2, -3]} intensity={2.0} color="#ffd1dc" /> {/* Warm rim light */}
+      <pointLight position={[-3, 2, -3]} intensity={1.0} color="#ffd1dc" /> {/* Warm rim light */}
 
       <group position={[0, -0.5, 0]}>
         <Cake />
@@ -37,7 +37,7 @@ export const Scene = () => {
       <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2.1} makeDefault />
 
       <EffectComposer disableNormalPass>
-        <Bloom luminanceThreshold={0.8} mipmapBlur intensity={0.2} radius={0.2} />
+        <Bloom luminanceThreshold={0.8} mipmapBlur intensity={0.1} radius={0.2} />
         <Vignette eskil={false} offset={0.1} darkness={0.7} />
         <ToneMapping />
       </EffectComposer>
