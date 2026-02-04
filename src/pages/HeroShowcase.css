@@ -1,0 +1,197 @@
+/* CSS Overlay for New Hero Visual */
+
+/* Hero Visual Area */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.showcase-container {
+    position: relative;
+    width: 380px;
+    height: 500px;
+}
+
+/* Arch Image Wrapper */
+.showcase-image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 200px 200px 20px 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(0);
+    animation: floatHero 6s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.showcase-container:hover .showcase-image {
+    transform: scale(1.05);
+}
+
+.showcase-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10, 17, 40, 0.4) 100%);
+    pointer-events: none;
+}
+
+/* Glassmorphism Badges */
+.floating-badge {
+    position: absolute;
+    background: rgba(10, 17, 40, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    animation: fadeIn badgeFloat 6s ease-in-out infinite;
+}
+
+.floating-badge:hover {
+    background: rgba(10, 17, 40, 0.8);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--accent-gold);
+}
+
+/* Badge Positioning and Specifics */
+.badge-top {
+    top: 40px;
+    left: -40px;
+    animation-delay: 0.5s;
+}
+
+.badge-bottom {
+    bottom: 40px;
+    right: -40px;
+    padding: 1.2rem;
+    animation-delay: 1s;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    min-width: 160px;
+}
+
+/* Badge Content */
+.badge-icon {
+    font-size: 1.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent-gold);
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.badge-sub {
+    font-family: 'Playfair Display', serif;
+    /* Keep serif for elegance on names */
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.badge-price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-label-small {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    background: var(--accent-gold);
+    color: var(--primary-navy);
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-btn:hover {
+    background: #e5c158;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .showcase-container {
+        width: 320px;
+        height: 420px;
+    }
+
+    .badge-top {
+        left: -20px;
+        top: 20px;
+    }
+
+    .badge-bottom {
+        right: -20px;
+        bottom: 20px;
+    }
+}

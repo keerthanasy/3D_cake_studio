@@ -1,0 +1,114 @@
+/* Premium Error Styling */
+.error-boundary {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.error-content {
+    text-align: center;
+    color: var(--text-light);
+    padding: 3rem;
+    max-width: 600px;
+    background: rgba(10, 17, 40, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.error-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    animation: shake 0.5s ease-in-out;
+    display: inline-block;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.error-content h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.error-message {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.error-button {
+    background: linear-gradient(135deg, var(--accent-gold), var(--dark-gold));
+    color: var(--primary-navy);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.error-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #e5c158, var(--accent-gold));
+}
+
+.error-details {
+    margin-top: 2.5rem;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.error-details summary {
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+}
+
+.error-details pre {
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.7);
+}
