@@ -16,8 +16,7 @@ const ALL_MODELS = [
     '/models/almonds.glb',
     '/models/cashews.glb',
     '/models/macarons.glb',
-    '/models/ferrero.glb',
-    '/models/candle.glb'
+    '/models/ferrero.glb'
 ];
 
 ALL_MODELS.forEach(path => useGLTF.preload(path));
@@ -314,6 +313,37 @@ export const GenericTopping = ({ config, count = 20, shape = 'round' }) => {
             baseScale={scale}
             rotationOffset={rotation}
         />;
+    }
+
+    // --- PROCEDURAL CANDLE LOGIC ---
+    if (id === 'candles') {
+        const candleHeight = 0.6;
+        const candleRadius = scale;
+        return (
+            <group>
+                {instances.map((obj, i) => (
+                    <group key={i} position={[obj.pos[0], obj.pos[1] + candleHeight / 2, obj.pos[2]]} rotation={[0, obj.rot, 0]}>
+                        {/* Wax Body */}
+                        <mesh castShadow receiveShadow>
+                            <cylinderGeometry args={[candleRadius, candleRadius, candleHeight, 16]} />
+                            <CandleWaxMaterial color={color} />
+                        </mesh>
+                        {/* Wick */}
+                        <mesh position={[0, candleHeight / 2 + 0.05, 0]}>
+                            <cylinderGeometry args={[0.015, 0.015, 0.1, 8]} />
+                            <meshStandardMaterial color="#333" />
+                        </mesh>
+                        {/* Flame */}
+                        <mesh position={[0, candleHeight / 2 + 0.15, 0]}>
+                            <coneGeometry args={[0.04, 0.15, 8]} />
+                            <meshStandardMaterial color="#ff9f43" emissive="#ff6b6b" emissiveIntensity={3} toneMapped={false} />
+                        </mesh>
+                        {/* Flame Glow (Simple point light) */}
+                        <pointLight position={[0, candleHeight / 2 + 0.2, 0]} intensity={0.5} color="#ff9f43" distance={1} decay={2} />
+                    </group>
+                ))}
+            </group>
+        );
     }
 
     // Geometry Selection
