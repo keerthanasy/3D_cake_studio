@@ -11,6 +11,28 @@
     left: 0;
     right: 0;
     bottom: 0;
+
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-gold) var(--primary-navy);
+}
+
+.landing-page::-webkit-scrollbar {
+    width: 10px;
+}
+
+.landing-page::-webkit-scrollbar-track {
+    background: var(--primary-navy);
+}
+
+.landing-page::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 5px;
+    border: 2px solid var(--primary-navy);
+}
+
+.landing-page::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
 }
 
 /* ===== HERO SECTION ===== */
