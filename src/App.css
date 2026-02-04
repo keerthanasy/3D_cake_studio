@@ -86,9 +86,19 @@ h1.app-title {
   width: 6px;
 }
 
-.ui-sidebar::-webkit-scrollbar-thumb {
-  background-color: #e2e8f0;
+.ui-sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+}
+
+.ui-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.ui-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
 }
 
 /* ===== MOBILE RESPONSIVENESS ===== */
