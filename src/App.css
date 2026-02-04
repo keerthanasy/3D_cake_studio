@@ -82,23 +82,47 @@ h1.app-title {
 }
 
 /* Scrollbar for sidebar */
-.ui-sidebar::-webkit-scrollbar {
+/* Scrollbar for sidebar and internal lists */
+.ui-sidebar *::-webkit-scrollbar,
+.ui-sidebar::-webkit-scrollbar,
+.topping-grid::-webkit-scrollbar,
+.step-content::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
+  /* For horizontal scrollbars if any */
 }
 
-.ui-sidebar::-webkit-scrollbar-track {
+.ui-sidebar *::-webkit-scrollbar-track,
+.ui-sidebar::-webkit-scrollbar-track,
+.topping-grid::-webkit-scrollbar-track,
+.step-content::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
 
-.ui-sidebar::-webkit-scrollbar-thumb {
+.ui-sidebar *::-webkit-scrollbar-thumb,
+.ui-sidebar::-webkit-scrollbar-thumb,
+.topping-grid::-webkit-scrollbar-thumb,
+.step-content::-webkit-scrollbar-thumb {
   background: rgba(212, 175, 55, 0.4);
   border-radius: 3px;
   transition: background 0.3s ease;
 }
 
-.ui-sidebar::-webkit-scrollbar-thumb:hover {
+.ui-sidebar *::-webkit-scrollbar-thumb:hover,
+.ui-sidebar::-webkit-scrollbar-thumb:hover,
+.topping-grid::-webkit-scrollbar-thumb:hover,
+.step-content::-webkit-scrollbar-thumb:hover {
   background: var(--accent-gold);
+}
+
+/* Firefox support */
+.ui-sidebar,
+.ui-sidebar *,
+.topping-grid,
+.step-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) rgba(0, 0, 0, 0.2);
 }
 
 /* ===== MOBILE RESPONSIVENESS ===== */
