@@ -322,7 +322,7 @@ export const GenericTopping = ({ config, count = 20, shape = 'round' }) => {
         return (
             <group>
                 {instances.map((obj, i) => (
-                    <group key={i} position={[obj.pos[0], obj.pos[1] + candleHeight / 2, obj.pos[2]]} rotation={[0, obj.rot, 0]}>
+                    <group key={i} position={[obj.pos[0], obj.pos[1] + candleHeight / 2 - 0.15, obj.pos[2]]} rotation={[0, obj.rot, 0]}>
                         {/* Wax Body */}
                         <mesh castShadow receiveShadow>
                             <cylinderGeometry args={[candleRadius, candleRadius, candleHeight, 16]} />
